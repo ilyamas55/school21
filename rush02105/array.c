@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   array.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ktiong <ktiong@student.42kl.edu.my>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 12:26:01 by ktiong            #+#    #+#             */
-/*   Updated: 2021/06/26 23:53:18 by smitzi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "header.h"
 
 char	**creation_arr(char *buf)
@@ -36,7 +24,7 @@ char	**creation_arr(char *buf)
 	return (a);
 }
 
-int		row_count(char *buf)
+int	row_count(char *buf)
 {
 	int		j;
 	int		rows;
@@ -57,13 +45,14 @@ char	*ft_strdup(char *src)
 	char	*dest;
 
 	src_len = ft_strlen(src);
-	if ((dest = (char *)malloc(src_len * sizeof(char) + 1)) == NULL)
+	dest = (char *)malloc(src_len * sizeof(char) + 1);
+	if (dest == NULL)
 		return (0);
 	ft_strcpy(dest, src);
 	return (dest);
 }
 
-int		ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int		index;
 

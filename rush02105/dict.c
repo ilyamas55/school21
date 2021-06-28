@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   dict.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ktiong <ktiong@student.42kl.edu.my>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 12:26:53 by ktiong            #+#    #+#             */
-/*   Updated: 2021/06/26 23:52:26 by smitzi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "header.h"
 
-int		dict(char *dictionary, char *str) // THis is Step 2 
+int	dict(char *dictionary, char *str)
 {
 	char	**arr;
 	char	**array;
@@ -22,18 +10,17 @@ int		dict(char *dictionary, char *str) // THis is Step 2
 
 	i = 0;
 	j = 0;
-	// This is will three important Functions ( Step 3 , Step 4 , Step 5)
-	arr = allocation(str); //Step 3  
-	array = copy_dict(dictionary); // Step 4 Read through the 
-	count = row_count(read_dict(dictionary)); // Read through the dictionary line 
-	if (arr[0][0] == '0' && arr[0][1] == '0' && arr[0][2] == '0') // This is just find three digit in an array 
+	arr = allocation(str);
+	array = copy_dict(dictionary);
+	count = row_count(read_dict(dictionary));
+	if (arr[0][0] == '0' && arr[0][1] == '0' && arr[0][2] == '0')
 	{
-		validate_word(ft_atoi(array, count, "0"));// Validate the dictionary word 
+		validate_word(ft_atoi(array, count, "0"));
 		return (0);
 	}
-	while (i < (ft_strlen(str) / 3 + calculate(str))) // Count the String Lenth 
+	while (i < (ft_strlen(str) / 3 + calculate(str)))
 	{
-		validate_data(arr[i], array, count); // Is to Validate the Digit 
+		validate_data(arr[i], array, count);
 		if (ft_strcmp(arr[i++], "000") != 0)
 			typeord(array, count, ft_strlen(str) / 3 + calculate(str), i);
 	}
@@ -41,7 +28,7 @@ int		dict(char *dictionary, char *str) // THis is Step 2
 	free(array);
 	return (0);
 }
-// THIS IS STEP 3 ) We allocate an emtpy array using malloc 
+
 char	**allocation(char *a)
 {
 	int		leng;
@@ -52,11 +39,13 @@ char	**allocation(char *a)
 	i = 0;
 	leng = ft_strlen(a);
 	start = calculate(a);
-	if (!(arr = (char **)malloc((leng / 3 + start) * sizeof(char *)))) 
+	arr = (char **)malloc((leng / 3 + start) * sizeof(char *));
+	if (!(arr))
 		print_error("Allocation Memory Error");
 	while (i < (leng / 3) + start)
 	{
-		if (!(arr[i] = (char *)malloc((3 + 1) * sizeof(char))))
+		arr[i] = (char *)malloc((3 + 1) * sizeof(char));
+		if (!(arr[i]))
 		{
 			print_error("Allocation Memory Error");
 			return (0);
@@ -94,7 +83,7 @@ char	**do_your_job(char *arg, char **arr, int leng, int first)
 	}
 	return (arr);
 }
-//Step 4 ) Is just to count which part in the .dic and read through line by line  
+
 char	**copy_dict(char *dictionary)
 {
 	int		i;
@@ -103,7 +92,7 @@ char	**copy_dict(char *dictionary)
 	char	*buf;
 	char	**a;
 
-	buf = ft_strdup(read_dict(dictionary)); // Allocate the copy string into a new memory 
+	buf = ft_strdup(read_dict(dictionary));
 	i = 0;
 	j = 0;
 	a = creation_arr(buf);
@@ -119,8 +108,8 @@ char	**copy_dict(char *dictionary)
 	free(buf);
 	return (a);
 }
-// THis is from ord.c
-int		validate_word(char *str)
+
+int	validate_word(char *str)
 {
 	unsigned int	i;
 

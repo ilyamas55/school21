@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ktiong <ktiong@student.42kl.edu.my>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 12:30:07 by ktiong            #+#    #+#             */
-/*   Updated: 2021/06/26 23:49:22 by smitzi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "header.h"
 
 char	*read_dict(char *d)
@@ -29,9 +17,9 @@ char	*read_dict(char *d)
 	return (b);
 }
 
-int		ft_is_number(char *str)
+int	ft_is_number(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -50,39 +38,44 @@ void	print_error(char *a)
 		write(2, a++, 1);
 }
 
-int		error_check(int argc, char *str) // Print Error 
+int	error_check(int argc, char *str)
 {
 	if (argc != 2 && argc != 3)
 	{
-		print_error("\033[0;31mError\n");
+		print_error("Error");
+		write(1, "\n", 1);
 		return (0);
 	}
 	if (!(ft_is_number(str)))
 	{
-		print_error("\033[0;31mError\n");
+		print_error("Error");
+		write(1, "\n", 1);
 		return (0);
 	}
 	if (ft_strlen(str) > 37)
 	{
-		print_error("\033[0;31mDict Error\n");
+		print_error("Dict Error");
+		write(1, "\n", 1);
 		return (0);
 	}
 	return (1);
 }
 
-int		main(int argc, char **argv) // This is accepting the Argument Counter 
+int	main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
 		if (!(error_check(argc, argv[1])))
 			return (0);
-		dict("numbers.dict", argv[1]); // This is Step 1 , calls out dict.c
+		dict("numbers.dict", argv[1]);
+		write(1, "\n", 1);
 	}
 	else if (argc == 3)
 	{
 		if (!(error_check(argc, argv[2])))
 			return (0);
 		dict(argv[1], argv[2]);
+		write(1, "\n", 1);
 	}
 	if (argc != 2 && argc != 3)
 	{

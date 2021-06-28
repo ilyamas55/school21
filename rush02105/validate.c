@@ -1,30 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ktiong <ktiong@student.42kl.edu.my>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 12:30:45 by ktiong            #+#    #+#             */
-/*   Updated: 2021/06/26 23:45:25 by smitzi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "header.h"
 
-void	validate_1(char **arr, char digit, int count) //Checks for hundred 
+void	validate_1(char **arr, char digit, int count)
 {
 	char	tmp[3];
 
 	tmp[0] = digit;
 	tmp[1] = '\0';
-	validate_word(ft_atoi(arr, count, tmp)); // Scan through the word 
+	validate_word(ft_atoi(arr, count, tmp));
 	write(1, " ", 1);
 	validate_word(ft_atoi(arr, count, "100"));
 	write(1, " ", 1);
 }
 
-void	validate_2(char **arr, char *digits, int count) // Check for 20 30 40 50 , etc 
+void	validate_2(char **arr, char *digits, int count)
 {
 	char	tmp[3];
 	int		j;
@@ -40,7 +28,7 @@ void	validate_2(char **arr, char *digits, int count) // Check for 20 30 40 50 , 
 	write(1, " ", 1);
 }
 
-void	validate_3(char **arr, char digit, int count) // Check for single digit 
+void	validate_3(char **arr, char digit, int count)
 {
 	char	tmp[3];
 
@@ -50,7 +38,7 @@ void	validate_3(char **arr, char digit, int count) // Check for single digit
 	write(1, " ", 1);
 }
 
-void	validate_data(char *n, char **word, int count) // Call this whole function 
+void	validate_data(char *n, char **word, int count)
 {
 	int		j;
 
@@ -70,7 +58,7 @@ void	validate_data(char *n, char **word, int count) // Call this whole function
 	}
 }
 
-int		calculate(char *s) // Calculate the length of string
+int	calculate(char *s)
 {
 	int		i;
 
